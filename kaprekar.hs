@@ -13,12 +13,8 @@ digitsToNumber = foldl1 appendTwoDigits
 smallest :: Int -> Int
 smallest = digitsToNumber . sort . numberToDigits
 
-reverseList :: [Int] -> [Int]
-reverseList list | length list == 1 = [head list]
-                 | otherwise        = [last list] ++ reverseList (init list)
-
 largest :: Int -> Int
-largest =  digitsToNumber . reverseList . sort . numberToDigits
+largest =  digitsToNumber . reverse . sort . numberToDigits
 
 difference :: Int -> Int
 difference number = largest number - smallest number
