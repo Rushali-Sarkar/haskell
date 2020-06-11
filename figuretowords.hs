@@ -29,12 +29,8 @@ convertupto3digits number | number < 100        = convertupto2digits number
 convertupto3digits number | mod number 100 == 0 = (upto20 !! (div number 100)) ++ hun
 convertupto3digits number | otherwise = (upto20 !! (div number 100)) ++ han ++ (convertupto2digits(mod number 100))
 
-reverseList :: [Int] -> [Int]
-reverseList list | length list == 1 = [head list]
-reverseList list | otherwise        = [last list] ++ reverseList (init list)
-
 getDenoms :: Int -> [Int]
-getDenoms number  = reverseList (map (idenoms !!) [0..len])
+getDenoms number  = reverse (map (idenoms !!) [0..len])
                    where len = (length (show number)) - 1
 
 splitIntoDenoms :: Int -> [Int] -> [(Int, Int)]
