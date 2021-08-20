@@ -2,6 +2,7 @@
 -- Holes are always represented by an underscore alone or suffixed by a name, as in _a, _b, and the like.
 -- Holes can be useful as a development technique.
 -- The nesting indentation in Case statements is necessary because Haskell is very white space sensitive
+-- Checking how it works
 
 import Data.List
 import Data.Char
