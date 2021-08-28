@@ -6,7 +6,9 @@ checkPasswordLength :: String -> Maybe String
 checkPasswordLength password = 
   case (length password > 20) of
     True -> Nothing
-    False -> Just password
+    False -> case (length password < 4) of
+      True -> Nothing
+      False -> Just password
 
 requireAlphaNum :: String -> Maybe String
 requireAlphaNum xs = 
@@ -22,14 +24,34 @@ cleanWhiteSpace (x:xs) =
     False -> Just (x:xs)
 
 
-validatePassword :: String -> String
+-- validatePassword :: String -> Maybe String
+-- validatePassword password = 
+--   case (cleanWhiteSpace password) of
+--     Nothing -> Nothing
+--     Just password2 -> 
+--       case (requireAlphaNum password2) of 
+--         Nothing -> Nothing
+--         Just password3 -> 
+--           case (checkPasswordLength password3) of
+--             Nothing -> Nothing
+--             Just password4 -> password4
+
+-- Infix operator is same as nesting but without the need for
+-- human to think through the positions of parantheses
+-- and the number of layers
+
+-- We cannot use the infix function composition operator 
+-- (.) because it will take
+-- one of another
+
+-- Behold here comes our monad
+-- m a gets passed to a function that needs just a input
+-- > symbol we have to use something from ord class
+
+validatePassword :: String -> Maybe String
 validatePassword password = 
-  case (checkPasswordLength password) of
-    Nothing -> "The password is more than 20 characters long"
-    Just password -> 
-      case (requireAlphaNum password) of
-        Nothing -> "The password cannot contain any specail character other than alphabets"
-        Just password -> "The password is valid"
+  cleanWhiteSpace password >>= requireAlphaNum >>= checkPasswordLength
+
 
 main :: IO ()
 main = do
