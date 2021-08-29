@@ -24,18 +24,7 @@ cleanWhiteSpace (x:xs) =
     False -> Just (x:xs)
 
 
--- validatePassword :: String -> Maybe String
--- validatePassword password = 
---   case (cleanWhiteSpace password) of
---     Nothing -> Nothing
---     Just password2 -> 
---       case (requireAlphaNum password2) of 
---         Nothing -> Nothing
---         Just password3 -> 
---           case (checkPasswordLength password3) of
---             Nothing -> Nothing
---             Just password4 -> password4
-
+-- :
 -- Infix operator is same as nesting but without the need for
 -- human to think through the positions of parantheses
 -- and the number of layers

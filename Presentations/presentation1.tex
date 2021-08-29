@@ -1,0 +1,52 @@
+\documentclass[14pt]{beamer}
+
+% Presento style file
+\usepackage{config/presento}
+\usepackage{dirtytalk}
+
+% custom command and packages
+\input{config/custom-command}
+
+% Information
+\title{Category Theory}
+\subtitle{in Haskell}
+\author{Rushali Sarkar}
+\date{\today}
+
+\begin{document}
+
+% Title page
+\begin{frame}[plain]
+\maketitle
+\end{frame}
+
+% sections in the presentation
+\begin{frame}{What is Category Theory?}
+ \say{Category Theory to programming is what chemistry is to baking.} \\
+   \hspace{7cm} -Ben Deane
+\end{frame}
+
+\framepic[0.8]{categories}{
+}
+
+\begin{frame}{Categories}
+\begin{center}
+    \includegraphics[]{cat.jpg}
+\end{center}
+\begin{itemize}
+  \item Identity Morphism
+  \item Composition
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Haskell Composition}
+ \begin{fullpageitemize}
+  \item {function1 :: A -> B}
+  \item {function2 :: B -> D}
+  \item {function3 = function1.function2}
+ \end{fullpageitemize}
+\end{frame}
+
+\framecard[colororange]{{\color{white}\hugetext{Thank You}}}
+
+\end{document}
